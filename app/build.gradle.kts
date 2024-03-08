@@ -42,6 +42,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     // Room
-    implementation(libs.runtime)
-    implementation(libs.compiler)
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
 }
