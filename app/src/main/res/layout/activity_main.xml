@@ -12,6 +12,12 @@
         android:hint="Enter user name" />
 
     <EditText
+        android:id="@+id/editTextSearchUserId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter user ID for search" />
+
+    <EditText
         android:id="@+id/editTextUserId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,15 +30,27 @@
         android:text="Add User" />
 
     <Button
+        android:id="@+id/searchButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search User by ID" />
+
+    <Button
         android:id="@+id/deleteButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Delete User by ID" />
 
+    <TextView
+        android:id="@+id/searchResultView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></TextView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
 </LinearLayout>

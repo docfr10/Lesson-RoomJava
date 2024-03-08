@@ -3,6 +3,7 @@ package com.example.lesson_roomjava;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,12 +41,31 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        Button searchButton = findViewById(R.id.searchButton);
+        EditText editTextSearchUserId = findViewById(R.id.editTextSearchUserId);
+        TextView searchResultView = findViewById(R.id.searchResultView);
+
         addButton.setOnClickListener(view -> {
             String userName = editTextUserName.getText().toString();
             if (!userName.isEmpty()) {
                 userViewModel.insert(new User(userName));
             } else {
                 Toast.makeText(MainActivity.this, "Please enter a name", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        searchButton.setOnClickListener(view -> {
+            try {
+                int userId = Integer.parseInt(editTextSearchUserId.getText().toString());
+                userViewModel.findUserById(userId).observe(this, user -> {
+                    if (user != null) {
+                        searchResultView.setText("User Found: " + user.getName());
+                    } else {
+                        searchResultView.setText("User not found");
+                    }
+                });
+            } catch (NumberFormatException e) {
+                Toast.makeText(MainActivity.this, "Please enter a valid ID", Toast.LENGTH_LONG).show();
             }
         });
 
