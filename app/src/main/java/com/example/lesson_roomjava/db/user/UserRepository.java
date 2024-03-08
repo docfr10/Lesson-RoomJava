@@ -35,4 +35,8 @@ public class UserRepository {
     public LiveData<List<User>> getAllUsers() {
         return allUsers;
     }
+
+    public LiveData<User> findUserById(int userId) {
+        return userDao.findUserById(userId);
+    }
 }
